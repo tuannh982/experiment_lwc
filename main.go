@@ -15,7 +15,7 @@ var (
 	uid           = flag.Int("uid", 1000, "UID")
 	gid           = flag.Int("gid", 1000, "GID")
 	hostname      = flag.String("hostname", "container", "hostname")
-	cgroup        = flag.String("cgroup", "isolator_container", "cgroup name")
+	cgroup        = flag.String("cgroup", "experiment_lwc", "cgroup name")
 	cpu           = flag.Float64("cpu", -1, "cpu")
 	memory        = flag.Int("memory", -1, "memory")
 	bridgeNetwork = flag.String("bridge", "bridge", "bridge network name")

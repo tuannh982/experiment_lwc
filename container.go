@@ -64,8 +64,8 @@ func createBridgeNetwork(bridgeName string, bridgeAddress string) {
 func createVethPair(bridgeName string, pid int) {
 	bridge, err := netlink.LinkByName(bridgeName)
 	commons.Must(err)
-	parentName := fmt.Sprintf("veth%s", "_i") // TODO FIXME replace by random string later
-	peerName := fmt.Sprintf("veth%s", "_ic")  // TODO FIXME replace by random string later
+	parentName := fmt.Sprintf("veth_%s", commons.StringRandom(8, commons.Lowercase+commons.Numeric))
+	peerName := fmt.Sprintf("veth_%s", commons.StringRandom(8, commons.Lowercase+commons.Numeric))
 	linkAttrs := &netlink.LinkAttrs{
 		Name:        parentName,
 		TxQLen:      -1,
