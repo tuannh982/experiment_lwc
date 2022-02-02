@@ -47,7 +47,7 @@ func (db *DB) QueryNetworkData(tx *bolt.Tx, name string) *NetworkData {
 	if v == nil || len(v) == 0 {
 		return nil
 	}
-	commons.Must(unmarshal(v, result))
+	commons.Must(unmarshal(v, &result))
 	return &result
 }
 
