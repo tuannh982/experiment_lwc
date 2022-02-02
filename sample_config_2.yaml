@@ -1,0 +1,16 @@
+root-fs: rootfs/alpine-minirootfs-3.15.0-x86_64
+chdir: /
+uid: 1000
+gid: 1000
+hostname: test-container
+resources:
+  cgroup: experiment_lwc
+  cpu: -1
+  memory: -1
+networks:
+  bridge_0:
+    address: 10.10.10.1/24
+    cidr: 10.10.10.3/24
+  bridge_1:
+    address: 10.10.11.1/24
+    cidr: 10.10.11.3/24

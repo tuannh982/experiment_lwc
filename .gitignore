@@ -23,4 +23,6 @@ go.work
 .idea
 .vscode
 rootfs
+containers
 experiment_lwc
+*.db

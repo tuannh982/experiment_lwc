@@ -6,6 +6,7 @@ import (
 	"math"
 	"os"
 	"path/filepath"
+	"strconv"
 )
 
 func write(path string, content string) {
@@ -45,7 +46,11 @@ func CGroupLimitMemory(cgroup string, limitInBytes int) {
 	dir := fmt.Sprintf("/sys/fs/cgroup/%s/%s/", resource, cgroup)
 	commons.Must(os.MkdirAll(dir, 0644))
 	if limitInBytes < 0 {
-		limitInBytes = math.MaxInt - 10240
+		if strconv.IntSize == 64 {
+			limitInBytes = 9223372036854771712
+		} else if strconv.IntSize == 32 {
+			limitInBytes = math.MaxInt - 10240
+		}
 	}
 	write(filepath.Join(dir, "memory.limit_in_bytes"), fmt.Sprintf("%d", limitInBytes))
 }
